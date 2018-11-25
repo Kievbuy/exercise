@@ -1,0 +1,1 @@
+Exercise::Application.config.secret_key_base = 'c52ad0d73d530fe6c72bdc1eedecd5b32705500e3c0a66b6adb60827479fd792310dadcd6806307991a3142501c9692d74ab3d0f6c4ba9bb2acd50246d803f16'
