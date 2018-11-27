@@ -1,9 +1,7 @@
 class V1::ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :update, :destroy]
-  before_action :check_permissions
 
   def index
-    binding.pry
     @articles = Article.all
 
     render json: @articles
@@ -14,7 +12,7 @@ class V1::ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.new(article_params)
+    @article = current_user.articles.build(article_params)
 
     if @article.save
       render json: @article, status: :created, location: @article
@@ -41,6 +39,6 @@ class V1::ArticlesController < ApplicationController
     end
 
     def article_params
-      params.require(:article).permit(:title, :body, :user_id)
+      params.require(:article).permit(:title, :body)
     end
 end
